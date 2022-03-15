@@ -1334,7 +1334,9 @@ test("w:hyperlink", {
     var relationships = new Relationships([
       hyperlinkRelationship("r42", "http://example.com/"),
     ]);
-    var result = readXmlElement(hyperlinkXml, { relationships: relationships });
+    var result = readXmlElement(hyperlinkXml, {
+      relationships: relationships,
+    });
     assert.deepEqual(result.value.href, "http://example.com/#fragment");
     assert.deepEqual(result.value.children[0].type, "run");
   },
@@ -1349,7 +1351,9 @@ test("w:hyperlink", {
     var relationships = new Relationships([
       hyperlinkRelationship("r42", "http://example.com/#previous"),
     ]);
-    var result = readXmlElement(hyperlinkXml, { relationships: relationships });
+    var result = readXmlElement(hyperlinkXml, {
+      relationships: relationships,
+    });
     assert.deepEqual(result.value.href, "http://example.com/#fragment");
     assert.deepEqual(result.value.children[0].type, "run");
   },
