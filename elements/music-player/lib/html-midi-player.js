@@ -13033,7 +13033,11 @@
         var t = s.default.defaults(arguments, ["threshold"], s.default.Limiter);
         s.default.AudioNode.call(this),
           (this._compressor = this.input = this.output = new s.default.Compressor(
-            { attack: 0.001, decay: 0.001, threshold: t.threshold }
+            {
+              attack: 0.001,
+              decay: 0.001,
+              threshold: t.threshold,
+            }
           )),
           (this.threshold = this._compressor.threshold),
           this._readOnly("threshold");

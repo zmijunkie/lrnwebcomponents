@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 const QRCodeMixin = function (SuperClass) {
@@ -20,9 +21,11 @@ const QRCodeMixin = function (SuperClass) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
       }
-      this.qrcodebtn = this.shadowRoot.querySelector("#qrcodebtn");
-      // hook up the pop over menu
-      this.shadowRoot.querySelector("#qrcodepopover").target = this.qrcodebtn;
+      // hook up the pop over menu with trap to ensure theme is rendering a QR code
+      if (this.shadowRoot.querySelector("#qrcodepopover")) {
+        this.qrcodebtn = this.shadowRoot.querySelector("#qrcodebtn");
+        this.shadowRoot.querySelector("#qrcodepopover").target = this.qrcodebtn;
+      }
     }
 
     static get styles() {
